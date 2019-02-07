@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
+    "prod": "NODE_ENV=production node src/index.js",
     "import": "node src/import.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
