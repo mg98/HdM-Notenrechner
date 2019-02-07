@@ -1,0 +1,26 @@
+#root {
+  margin-top: 20px;
+}
+
+#notenschnittCard {
+  position: fixed;
+  right: 40px;
+}
+
+#notenschnitt {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.notenschnitt-end {
+  color: #A7A7A7;
+}
+
+.noteInput {
+  width: 75px;
+}
+
+.notentabelle tr > td:last-child,
+.notentabelle tr > td:nth-last-child(1) {
+  width: 100px;
+}
