@@ -28,7 +28,7 @@ class LoginForm extends Component {
         this.setState({
             loading: true
         });
-        axios.get('http://localhost:8080', {
+        axios.get('http://localhost:3000', {
             params: {
                 username: this.state.username,
                 password: this.state.password

@@ -4,7 +4,7 @@ const cheerio = require('cheerio')
 const url = require('url')
 const hdmModule = require('../storage/hdm-module')
 
-const port = 8080
+const port = 3000
 
 
 const app = http.createServer((req, res) => {
@@ -133,8 +133,3 @@ const app = http.createServer((req, res) => {
 
 app.listen(port);
 console.log('Server listening on port ' + port)
-
-
-
-
-
