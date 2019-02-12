@@ -3,6 +3,8 @@ import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui
 import logo from './hdm-logo.jpg'
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || '/api';
+
 class LoginForm extends Component {
 
     constructor(props) {
@@ -28,7 +30,7 @@ class LoginForm extends Component {
         this.setState({
             loading: true
         });
-        axios.get('http://localhost:3000', {
+        axios.get(API_URL, {
             params: {
                 username: this.state.username,
                 password: this.state.password
