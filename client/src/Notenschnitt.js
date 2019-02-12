@@ -57,12 +57,11 @@ class App extends Component {
     render() {
         let notenschnitt = <span>{this.state.notenschnitt.toFixed(2)}</span>;
         if (this.state.detailView) {
-            console.log(this.state.notenschnitt);
-            const detailRest = this.state.notenschnitt.toFixed(10).substring(4);
+            const detail = this.state.notenschnitt.toFixed(10)
             notenschnitt = (
                 <span>
-                    <span className="notenschnitt-begin">{notenschnitt}</span>
-                    <span className="notenschnitt-end">{detailRest}</span>
+                    <span className="notenschnitt-begin">{detail.substring(0, 4)}</span>
+                    <span className="notenschnitt-end">{detail.substring(4)}</span>
                 </span>
             )
         }
