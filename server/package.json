@@ -7,19 +7,22 @@
     "start": "nodemon src/index.js",
     "prod": "NODE_ENV=production node src/index.js",
     "import": "node src/import.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "chai": "^4.2.0",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "form-data": "^2.3.3",
     "jquery-param": "^1.0.1",
+    "mocha": "^5.2.0",
     "request": "^2.88.0"
   },
   "devDependencies": {
+    "chai-match": "^1.1.1",
     "nodemon": "^1.18.9"
   }
 }
