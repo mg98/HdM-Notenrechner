@@ -112,6 +112,7 @@ const app = http.createServer((req, res) => {
 			for (let i = 0; i < angemeldet.length; i++) {
                 for (let j = 0; j < hdmModule[studies].length; j++) {
                     if (hdmModule[studies][j].edvNr === angemeldet[i].edvNr) {
+                    	angemeldet[i].name = hdmModule[studies][j].name
                         angemeldet[i].ects = hdmModule[studies][j].ects
                         break
                     }
@@ -120,6 +121,7 @@ const app = http.createServer((req, res) => {
                 	if (keyStudies === studies) continue
                     for (let j = 0; j < hdmModule[keyStudies].length; j++) {
                         if (hdmModule[keyStudies][j].edvNr === angemeldet[i].edvNr) {
+                            angemeldet[i].name = hdmModule[keyStudies][j].name
                             angemeldet[i].ects = hdmModule[keyStudies][j].ects
                             break
                         }

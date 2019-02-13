@@ -29,10 +29,6 @@ fs.readdir(path, function(err, files) {
             if (!hdmModule[studies].some(l => l.edvNr === hdmModul.edvNr)) {
                 hdmModule[studies].push(hdmModul)
             }
-
-            if (hdmModul.edvNr === "114190") {
-                console.log(body)
-            }
         });
     }
 
