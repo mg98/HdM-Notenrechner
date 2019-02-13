@@ -43,7 +43,7 @@ const app = http.createServer((req, res) => {
                     res.writeHead(500, errorMsg, {
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Origin' : '*',
-                        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
+                        'Access-Control-Allow-Methods': 'POST'
                     });
 
                     res.end();
@@ -60,7 +60,7 @@ const app = http.createServer((req, res) => {
                     res.writeHead(500, errorMsg, {
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Origin' : '*',
-                        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
+                        'Access-Control-Allow-Methods': 'POST'
                     });
 
                     res.end();
@@ -139,7 +139,7 @@ const app = http.createServer((req, res) => {
                         res.writeHead(200, {
                             'Content-Type': 'application/json',
                             'Access-Control-Allow-Origin' : '*',
-                            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
+                            'Access-Control-Allow-Methods': 'POST'
                         });
 
                         res.end(JSON.stringify({
@@ -159,13 +159,13 @@ const app = http.createServer((req, res) => {
         res.writeHead(200, {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin' : '*',
-            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+            'Access-Control-Allow-Methods': 'POST',
             'Access-Control-Allow-Headers': '*'
         });
         res.end()
     } else {
-        res.writeHead(404, {"Content-Type": "text/plain"});
-        res.write("404 Not found");
+        res.writeHead(404, {'Content-Type': 'text/plain'});
+        res.write('404 Not found');
         res.end();
 	}
 });
