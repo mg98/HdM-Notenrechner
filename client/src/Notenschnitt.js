@@ -11,7 +11,6 @@ class App extends Component {
     };
 
     constructor(props) {
-        console.log("notenschnitt constructor");
         super(props);
 
         this.calculate(this.props.store.leistungen);

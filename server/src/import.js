@@ -2,7 +2,7 @@ const cheerio = require('cheerio')
 const fs = require('fs')
 
 const path = 'storage/hdm_export/'
-const hdmModule = []
+const hdmModule = {}
 
 fs.readdir(path, function(err, files) {
     for (let i = 0; i < files.length; i++) {
@@ -14,6 +14,10 @@ fs.readdir(path, function(err, files) {
         const $ = cheerio.load(body)
         const tableRows = $('table tr:not(:first-child, :nth-child(2), :nth-child(3))')
 
+        if (!(studies in hdmModule)) {
+            hdmModule[studies] = []
+        }
+
         tableRows.each(function() {
             const hdmModul = {
                 edvNr: $(this).find('td').eq(0).html().trim(),
@@ -23,8 +27,8 @@ fs.readdir(path, function(err, files) {
                 ects: parseInt($(this).find('td').eq(2).html().trim())
             }
 
-            if (!hdmModule.some(l => l.edvNr === hdmModul.edvNr)) {
-                hdmModule.push(hdmModul)
+            if (!hdmModule[studies].some(l => l.edvNr === hdmModul.edvNr)) {
+                hdmModule[studies].push(hdmModul)
             }
         });
     }

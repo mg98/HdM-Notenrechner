@@ -6,7 +6,6 @@ const hdmModule = require('../storage/hdm-module')
 
 const port = 3000
 
-
 const app = http.createServer((req, res) => {
 	const query = url.parse(req.url, true).query;
 
@@ -70,6 +69,10 @@ const app = http.createServer((req, res) => {
 	  	options.url = notenspiegelUrl
 	  	request(options, function (error, response, body) {
 	  		const $ = cheerio.load(body)
+
+            const generalTableRow = $('table:nth-of-type(1) > tbody > tr:first-child')
+			const studies = generalTableRow.find('td').eq(0).text().trim().substring('Studiengang :  '.length).toLowerCase()
+
 	  		const notenTableRows = $('table:nth-of-type(2) > tbody > tr:not(:first-child)')
 	  		let bestanden = []
 	  		let angemeldet = []
@@ -106,14 +109,21 @@ const app = http.createServer((req, res) => {
 	  		const bestandenEdvNr = bestanden.map(l => l.edvNr)
 	  		angemeldet = angemeldet.filter(l => !bestandenEdvNr.includes(l.edvNr))
 
-
 			for (let i = 0; i < angemeldet.length; i++) {
-				for (let j = 0; j < hdmModule.length; j++) {
-					if (hdmModule[j].edvNr === angemeldet[i].edvNr) {
-                        angemeldet[i].ects = hdmModule[j].ects
-						console.log("seettin " + hdmModule[j].ects)
-						break
-					}
+                for (let j = 0; j < hdmModule[studies].length; j++) {
+                    if (hdmModule[studies][j].edvNr === angemeldet[i].edvNr) {
+                        angemeldet[i].ects = hdmModule[studies][j].ects
+                        break
+                    }
+                }
+                for (const keyStudies in hdmModule) {
+                	if (keyStudies === studies) continue
+                    for (let j = 0; j < hdmModule[keyStudies].length; j++) {
+                        if (hdmModule[keyStudies][j].edvNr === angemeldet[i].edvNr) {
+                            angemeldet[i].ects = hdmModule[keyStudies][j].ects
+                            break
+                        }
+                    }
 				}
 			}
 
@@ -123,7 +133,14 @@ const app = http.createServer((req, res) => {
 			    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
 			});
 
-    		res.end(JSON.stringify({ bestanden: bestanden, angemeldet: angemeldet }));
+    		res.end(JSON.stringify({
+				studies: studies,
+                alleModule: hdmModule,
+				leistungen: {
+					bestanden: bestanden,
+					angemeldet: angemeldet
+				}
+    		}));
     		console.log('reply')
 	  	})
 	  })

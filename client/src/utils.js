@@ -3,6 +3,8 @@ const utils = {};
 // create a new store
 utils.createStore = function() {
     return {
+        studies: null,
+        alleModule: [],
         leistungen: {},
         loggedIn: false,
         subscribers: [],

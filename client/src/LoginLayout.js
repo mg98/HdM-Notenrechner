@@ -37,7 +37,9 @@ class LoginForm extends Component {
             }
         }).then(res => {
             this.props.store.loggedIn = true;
-            this.props.store.leistungen = res.data;
+            this.props.store.studies = res.data.studies;
+            this.props.store.alleModule = res.data.alleModule;
+            this.props.store.leistungen = res.data.leistungen;
             this.props.store.notify();
             this.setState({
                 loading: false
