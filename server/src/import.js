@@ -10,7 +10,7 @@ fs.readdir(path, function(err, files) {
         const studies = fileParts[0]
         const sort = fileParts[1].substring(0, fileParts[1].length - '.html'.length)
 
-        const body = fs.readFileSync(path + files[i], 'utf8');
+        const body = fs.readFileSync(path + files[i], {encoding: 'utf8'});
         const $ = cheerio.load(body)
         const tableRows = $('table tr:not(:first-child, :nth-child(2), :nth-child(3))')
 
@@ -23,8 +23,12 @@ fs.readdir(path, function(err, files) {
                 edvNr: $(this).find('td').eq(0).html().trim(),
                 studies: studies,
                 sort: sort,
-                name: $(this).find('td').eq(1).html().trim(),
-                ects: parseInt($(this).find('td').eq(2).html().trim())
+                ects: parseInt($(this).find('td').eq(2).html().trim()),
+                name: $(this).find('td').eq(1).html().trim()
+                    /* temporary fix for utf8 bug */
+                    .replace('&#xE4;', 'ä').replace('&#xC4;', 'Ä')
+                    .replace('&#xF6;', 'ö').replace('&#xD6;', 'Ö')
+                    .replace('&#xFC;', 'ü').replace('&#xDC;', 'Ü').replace('&#xFFFD;', 'ü')
             }
             if (!hdmModule[studies].some(l => l.edvNr === hdmModul.edvNr)) {
                 hdmModule[studies].push(hdmModul)
@@ -32,8 +36,12 @@ fs.readdir(path, function(err, files) {
         });
     }
 
-    fs.writeFile('storage/hdm-module.json', JSON.stringify(hdmModule), 'utf8', function() {
-        console.log('Import succeed')
+    fs.writeFile('storage/hdm-module.json', JSON.stringify(hdmModule), 'utf8', function (err) {
+        if (err) {
+            console.log('Import error!', err)
+        } else {
+            console.log('Import succeed')
+        }
     });
 })
 

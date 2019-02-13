@@ -43,7 +43,7 @@ const app = http.createServer((req, res) => {
 		return;
 	  }
 
-	  if (pruefungsverwaltungUrl == undefined) {
+	  if (pruefungsverwaltungUrl === undefined) {
 	  	let errorMsg = 'Der HdM-Server ist zurzeit nicht wie gewohnt erreichbar.'
 	  	const hours = (new Date).getHours()
 	  	if (hours >= 2 && hours < 4) {
