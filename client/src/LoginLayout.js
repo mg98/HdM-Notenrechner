@@ -31,9 +31,6 @@ class LoginForm extends Component {
             loading: true
         });
 
-        const bodyFormData = new FormData()
-        bodyFormData.append('username', this.state.username)
-        bodyFormData.append('password', this.state.password)
         axios.post(API_URL, {
             username: this.state.username,
             password: this.state.password
