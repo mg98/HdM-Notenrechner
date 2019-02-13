@@ -47,3 +47,13 @@
   font-weight: bold;
   text-align: left;
 }
+
+#login-form button {
+  background-color: #d0313c;
+  color: white;
+}
+
+#login-form h2 {
+  color: #404847;
+}
+

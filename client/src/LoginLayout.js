@@ -64,7 +64,7 @@ class LoginForm extends Component {
         }
 
         return (
-            <div className='login-form'>
+            <div id='login-form'>
                 <style>{`
                   body > div,
                   body > div > div,
@@ -74,7 +74,7 @@ class LoginForm extends Component {
                 `}</style>
                 <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
                     <Grid.Column style={{ maxWidth: 450 }}>
-                        <Header as='h2' color='teal' textAlign='center'>
+                        <Header as='h2' textAlign='center'>
                             <Image src={logo} /> Log dich ein
                         </Header>
                         <Form size='large' loading={this.state.loading}>
@@ -95,7 +95,7 @@ class LoginForm extends Component {
                                     onChange={this.changePassword}
                                 />
 
-                                <Button color='teal' fluid size='large' onClick={this.login}>
+                                <Button fluid size='large' onClick={this.login}>
                                     Login
                                 </Button>
                             </Segment>
