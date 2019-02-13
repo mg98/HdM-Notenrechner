@@ -34,3 +34,16 @@
 .notentabelle tr > td:nth-last-child(1) {
   width: 100px;
 }
+
+#newExamSelection tr > td:first-child {
+  width: 80px;
+}
+
+#newExamSelection tr > td:last-child {
+  width: 100%;
+}
+
+#newExamSelection th {
+  font-weight: bold;
+  text-align: left;
+}

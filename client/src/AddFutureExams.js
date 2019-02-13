@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Popup, Card } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
-import NewExamSelection from "./NewExamSelection";
+import NewExamSelection from './NewExamSelection';
 
 class AddFutureExams extends Component {
 

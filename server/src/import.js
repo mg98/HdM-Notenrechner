@@ -26,9 +26,12 @@ fs.readdir(path, function(err, files) {
                 name: $(this).find('td').eq(1).html().trim(),
                 ects: parseInt($(this).find('td').eq(2).html().trim())
             }
-
             if (!hdmModule[studies].some(l => l.edvNr === hdmModul.edvNr)) {
                 hdmModule[studies].push(hdmModul)
+            }
+
+            if (hdmModul.edvNr === "114190") {
+                console.log(body)
             }
         });
     }
