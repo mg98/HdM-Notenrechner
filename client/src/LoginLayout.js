@@ -30,12 +30,11 @@ class LoginForm extends Component {
         this.setState({
             loading: true
         });
-        axios.get(API_URL, {
-            params: {
-                username: this.state.username,
-                password: this.state.password
-            }
-        }).then(res => {
+
+        const bodyFormData = new FormData()
+        bodyFormData.append('username', this.state.username)
+        bodyFormData.append('password', this.state.password)
+        axios.post(API_URL, {username:this.state.username,password:this.state.password}, {headers : {'Content-Type': 'application/json'}}).then(res => {
             this.props.store.loggedIn = true;
             this.props.store.studies = res.data.studies;
             this.props.store.alleModule = res.data.alleModule;
