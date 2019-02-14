@@ -2,7 +2,6 @@ const http = require('http');
 const request = require('request')
 const cheerio = require('cheerio')
 const url = require('url')
-const { parse } = require('querystring');
 const hdmModule = require('../storage/hdm-module')
 
 const port = 3000
