@@ -78,7 +78,9 @@ class NewExamSelection extends Component {
                                       onChange={this.updateCourseDropdown} />
                         </td>
                         <td>
-                            <Dropdown fluid search selection options={this.state.coursesOptions} />
+                            <Dropdown fluid search selection
+                                      placeholder='Modul auswählen'
+                                      options={this.state.coursesOptions} />
                         </td>
                     </tr>
                 </tbody>

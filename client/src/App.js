@@ -29,7 +29,7 @@ class App extends Component {
                 <Container>
                     <Grid>
                         <Grid.Column width={10}>
-                            <Header as='h2'>Angemeldete aber noch nicht bewertete Leistungen</Header>
+                            <Header as='h3'>Angemeldete aber noch nicht bewertete Leistungen</Header>
                             <Table className='notentabelle' celled>
                                 <Table.Header>
                                     <Table.Row>
@@ -56,7 +56,7 @@ class App extends Component {
                                     })}
                                 </Table.Body>
                             </Table>
-                            <Header as='h2'>Bestandene Leistungen</Header>
+                            <Header as='h3'>Bestandene Leistungen</Header>
                             <Table className='notentabelle' celled>
                                 <Table.Header>
                                     <Table.Row>

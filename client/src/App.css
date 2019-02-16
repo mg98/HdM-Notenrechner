@@ -26,6 +26,11 @@
   color: #A7A7A7;
 }
 
+.ui.celled.table.notentabelle th {
+  background: #d0313c;
+  color: white;
+}
+
 .noteInput {
   width: 75px;
 }
@@ -56,4 +61,3 @@
 #login-form h2 {
   color: #404847;
 }
-
