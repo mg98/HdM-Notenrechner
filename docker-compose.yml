@@ -16,8 +16,6 @@ services:
     command: npm start
     volumes:
     - ./client:/usr/src/app/client
-    depends_on:
-    - server
     ports:
     - 8080:8080
     links:

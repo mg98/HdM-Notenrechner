@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import logo from './hdm-logo.jpg'
 
-const API_URL = process.env.REACT_APP_API_URL || '/api';
+const API_URL = process.env.REACT_APP_API_URL || '/api/';
 
 class LoginForm extends Component {
 
@@ -45,14 +45,14 @@ class LoginForm extends Component {
         })
         .then(res => res.json())
         .then(res => {
-            this.props.store.loggedIn = true;
-            this.props.store.studies = res.studies;
-            this.props.store.alleModule = res.alleModule;
-            this.props.store.leistungen = res.leistungen;
-            this.props.store.notify();
+            this.props.store.loggedIn = true
+            this.props.store.studies = res.studies
+            this.props.store.alleModule = res.alleModule
+            this.props.store.leistungen = res.leistungen
+            this.props.store.notify()
             this.setState({
                 loading: false
-            });
+            })
         }).catch(err => {
             console.log("error zurueckgeworfen");
             console.log(err);
