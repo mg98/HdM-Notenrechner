@@ -1,10 +1,19 @@
 const http = require('http');
 const request = require('request')
 const cheerio = require('cheerio')
-const url = require('url')
 const hdmModule = require('../storage/hdm-module')
 
+const log4js = require('log4js')
+log4js.configure({
+    appenders: { default: { type: 'file', filename: 'server.log' } },
+    categories: { default: { appenders: ['default'], level: 'debug' } }
+});
+
+const log = log4js.getLogger('default');
+
 const port = 3000
+
+log.debug('Creating server')
 
 const app = http.createServer((req, res) => {
     if (req.method === 'POST') {
@@ -170,4 +179,5 @@ const app = http.createServer((req, res) => {
 });
 
 app.listen(port);
+log.debug('Server listening')
 console.log('Server listening on port ' + port)

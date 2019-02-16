@@ -4,3 +4,4 @@ node_modules
 #!storage/.gitkeep
 storage/hdm-module.json
 .DS_Store
+server.log

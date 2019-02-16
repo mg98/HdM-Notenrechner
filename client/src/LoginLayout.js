@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import logo from './hdm-logo.jpg'
-import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL || '/api';
+const API_URL = process.env.REACT_APP_API_URL || '/api/';
 
 class LoginForm extends Component {
 
@@ -31,18 +30,29 @@ class LoginForm extends Component {
             loading: true
         });
 
-        axios.post(API_URL, {
-            username: this.state.username,
-            password: this.state.password
-        }).then(res => {
-            this.props.store.loggedIn = true;
-            this.props.store.studies = res.data.studies;
-            this.props.store.alleModule = res.data.alleModule;
-            this.props.store.leistungen = res.data.leistungen;
-            this.props.store.notify();
+        fetch(API_URL, {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            mode: "cors", // no-cors, cors, *same-origin
+            cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: "same-origin", // include, *same-origin, omit
+            headers: {
+                "Content-Type": "application/json",
+                // "Content-Type": "application/x-www-form-urlencoded",
+            },
+            redirect: "follow", // manual, *follow, error
+            referrer: "no-referrer", // no-referrer, *client
+            body: JSON.stringify({username: this.state.username, password: this.state.password}), // body data type must match "Content-Type" header
+        })
+        .then(res => res.json())
+        .then(res => {
+            this.props.store.loggedIn = true
+            this.props.store.studies = res.studies
+            this.props.store.alleModule = res.alleModule
+            this.props.store.leistungen = res.leistungen
+            this.props.store.notify()
             this.setState({
                 loading: false
-            });
+            })
         }).catch(err => {
             console.log("error zurueckgeworfen");
             console.log(err);
