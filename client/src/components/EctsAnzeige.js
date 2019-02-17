@@ -40,7 +40,8 @@ class EctsAnzeige extends Component {
 
         this.setState({
             ects: ects,
-            angemeldeteEcts: angemeldeteEcts
+            angemeldeteEcts: angemeldeteEcts,
+            geplanteEcts: geplanteEcts
         });
     }
 

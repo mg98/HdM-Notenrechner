@@ -42,6 +42,17 @@ class Notenschnitt extends Component {
             }
         }
 
+        for (const i in leistungen.hinzugefuegt) {
+            const leistung = leistungen.hinzugefuegt[i];
+            if (leistung.note && leistung.note !== '') {
+                const note = parseInt(leistung.note.replace(',', '.'));
+                if (!isNaN(note)) {
+                    notenSumme += leistung.ects * leistung.note;
+                    ectsSumme += leistung.ects;
+                }
+            }
+        }
+
         this.setState({
             notenschnitt: notenSumme / ectsSumme
         });
