@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import logo from './hdm-logo.jpg'
+import logo from '../hdm-logo.jpg'
 
 const API_URL = process.env.REACT_APP_API_URL || '/api/';
 

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import loading from './loading.gif';
 import './App.css';
 import { Container, Grid, Table, Label, Input, Header } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
-import Notenschnitt from './Notenschnitt'
-import AddFutureExams from './AddFutureExams'
-import LoginForm from './LoginLayout';
+import Notenschnitt from './components/Notenschnitt'
+import AddFutureExams from './components/AddFutureExams'
+import LoginForm from './components/LoginLayout';
 
 class App extends Component {
 
