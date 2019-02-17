@@ -3,7 +3,7 @@ import '../App.css';
 import { Popup, Card } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 
-class App extends Component {
+class Notenschnitt extends Component {
 
     state = {
         notenschnitt: 0,
@@ -88,4 +88,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Notenschnitt;

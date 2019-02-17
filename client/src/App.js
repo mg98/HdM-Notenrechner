@@ -5,6 +5,8 @@ import 'semantic-ui-css/semantic.min.css'
 import Notenschnitt from './components/Notenschnitt'
 import AddFutureExams from './components/AddFutureExams'
 import LoginForm from './components/LoginLayout';
+import EctsAnzeige from "./components/EctsAnzeige";
+import AddedExams from "./components/AddedExams";
 
 class App extends Component {
 
@@ -27,6 +29,7 @@ class App extends Component {
                 <Container>
                     <Grid>
                         <Grid.Column width={10}>
+                            <AddedExams store={this.props.store} />
                             <Header as='h3'>Angemeldete aber noch nicht bewertete Leistungen</Header>
                             <Table className='notentabelle' celled>
                                 <Table.Header>
@@ -77,8 +80,9 @@ class App extends Component {
                                 </Table.Body>
                             </Table>
                         </Grid.Column>
-                        <Grid.Column width={6}>
+                        <Grid.Column id='sidebar' width={6}>
                             <Notenschnitt store={this.props.store} />
+                            <EctsAnzeige store={this.props.store} />
                             <AddFutureExams store={this.props.store} />
                         </Grid.Column>
                     </Grid>

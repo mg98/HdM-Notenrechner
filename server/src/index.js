@@ -85,7 +85,9 @@ app.post('/api', (req, res) => {
                 const $ = cheerio.load(body)
 
                 const generalTableRow = $('table:nth-of-type(1) > tbody > tr:first-child')
+
                 const studies = generalTableRow.find('td').eq(0).text().trim().substring('Studiengang :  '.length).toLowerCase()
+                const semester = parseInt(generalTableRow.find('td').eq(2).text().trim().slice(-1))
 
                 const notenTableRows = $('table:nth-of-type(2) > tbody > tr:not(:first-child)')
                 let bestanden = []
@@ -150,6 +152,7 @@ app.post('/api', (req, res) => {
                 });
 
                 res.end(JSON.stringify({
+                    semester: semester,
                     studies: studies,
                     alleModule: hdmModule,
                     leistungen: {

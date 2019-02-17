@@ -46,9 +46,11 @@ class LoginForm extends Component {
         .then(res => res.json())
         .then(res => {
             this.props.store.loggedIn = true
+            this.props.store.semester = res.semester
             this.props.store.studies = res.studies
             this.props.store.alleModule = res.alleModule
             this.props.store.leistungen = res.leistungen
+            this.props.store.leistungen.hinzugefuegt = []
             this.props.store.notify()
             this.setState({
                 loading: false

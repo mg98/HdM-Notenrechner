@@ -3,6 +3,7 @@ const utils = {};
 // create a new store
 utils.createStore = function() {
     return {
+        semester: 0,
         studies: null,
         alleModule: [],
         leistungen: {},

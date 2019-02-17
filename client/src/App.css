@@ -1,20 +1,19 @@
 #root {
   margin-top: 20px;
 }
-#notenschnittCard,
-#addFutureExamsCard {
+
+#sidebar .card {
   width: 400px;
-}
-
-#notenschnittCard {
   position: fixed;
   right: 40px;
+}
+
+#ectsAnzeigeCard {
+  top: 142px;
 }
 
 #addFutureExamsCard {
-  position: fixed;
-  right: 40px;
-  top: 142px;
+  top: 428px;
 }
 
 #notenschnitt {
@@ -44,7 +43,7 @@
   width: 80px;
 }
 
-#newExamSelection tr > td:last-child {
+#newExamSelection tr > td:nth-child(2) {
   width: 100%;
 }
 
@@ -60,4 +59,12 @@
 
 #login-form h2 {
   color: #404847;
+}
+
+
+#addFutureExams i.plus.circle {
+  font-size: 24px;
+  color: #16AB39;
+  margin: 4px 0 0 0;
+  cursor: pointer;
 }
