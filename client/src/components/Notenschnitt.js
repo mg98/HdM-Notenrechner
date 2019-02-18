@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Popup, Card } from 'semantic-ui-react';
+import {Popup, Card, Responsive} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
+import EctsAnzeige from "../App";
+import {Grid} from "semantic-ui-react/dist/commonjs/collections/Grid";
 
 class Notenschnitt extends Component {
 
@@ -83,18 +85,32 @@ class Notenschnitt extends Component {
         };
 
         return (
-            <Card id="notenschnittCard">
-                <Card.Content header="Durchschnitt" />
-                <Card.Content id="notenschnitt" onClick={this.toggleDetailView}>
-                    <Popup
-                        trigger={notenschnitt}
-                        content='Genauer'
-                        position='bottom left'
-                        style={style}
-                        inverted
-                    />
-                </Card.Content>
-            </Card>
+            <div>
+                <Responsive minWidth={Responsive.onlyTablet.minWidth}>
+                    <Card id="notenschnittCard">
+                        <Card.Content header="Durchschnitt" />
+                        <Card.Content id="notenschnitt" onClick={this.toggleDetailView}>
+                            <Popup
+                                trigger={notenschnitt}
+                                content='Genauer'
+                                position='bottom left'
+                                style={style}
+                                inverted
+                            />
+                        </Card.Content>
+                    </Card>
+                </Responsive>
+                <Responsive {...Responsive.onlyMobile}>
+                    <Card id='notenschnittCard-mobile'>
+                        <Card.Content>
+                            <Card.Header>
+                                Durchschnitt:
+                                <span className="right floated">{this.state.notenschnitt.toFixed(2)}</span>
+                            </Card.Header>
+                        </Card.Content>
+                    </Card>
+                </Responsive>
+            </div>
         )
     }
 }

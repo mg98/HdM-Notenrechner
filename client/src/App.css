@@ -2,27 +2,67 @@
   margin-top: 20px;
 }
 
+
 #sidebar .card {
-  width: 400px;
   position: fixed;
-  right: 40px;
 }
 
-#ectsAnzeigeCard {
-  top: 142px;
+@media only screen and (min-width: 769px) {
+  #sidebar .card {
+    width: 400px;
+    right: 40px;
+  }
+
+  #ectsAnzeigeCard {
+    top: 142px;
+  }
+
+  #addFutureExamsCard {
+    top: 428px;
+  }
+
+  #notenschnitt {
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .notenschnitt-end {
+    color: #A7A7A7;
+  }
 }
 
-#addFutureExamsCard {
-  top: 428px;
+@media only screen and (max-width: 768px) {
+  #sidebar .card {
+    left: 0;
+    bottom: 0;
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  #sidebar .card .header {
+    font-size: 14px;
+  }
+
+  #sidebar .card th {
+    font-size: 12px;
+  }
+
 }
 
-#notenschnitt {
-  font-size: 24px;
-  cursor: pointer;
+#sidebar #notenschnittCard-mobile {
+  bottom: 258px;
 }
 
-.notenschnitt-end {
-  color: #A7A7A7;
+#sidebar #ectsAnzeigeCard-mobile {
+  bottom: 140px;
+}
+
+#sidebar #addFutureExamsCard-mobile {
+}
+
+
+.ui.celled.table.notentabelle thead {
+  background: #d0313c;
 }
 
 .ui.celled.table.notentabelle th {
@@ -67,4 +107,30 @@
   color: #16AB39;
   margin: 4px 0 0 0;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1120px) {
+  #sidebar .card {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  #sidebar .card {
+    width: 250px;
+  }
+
+  #addFutureExamsCard {
+    top: 448px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #sidebar .card {
+    width: 250px;
+  }
+
+  #addFutureExamsCard {
+    top: 448px;
+  }
 }

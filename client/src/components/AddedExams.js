@@ -23,7 +23,7 @@ class AddedExams extends Component {
             return (
                 <div>
                     <Header as='h3'>Geplante Leistungen</Header>
-                    <Table className='notentabelle' celled>
+                    <Table className='notentabelle unstackable' celled>
                         <Table.Header>
                         <Table.Row>
                         <Table.HeaderCell>Modul</Table.HeaderCell>

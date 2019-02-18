@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Container, Grid, Table, Label, Input, Header } from 'semantic-ui-react';
+import { Responsive, Segment, Container, Grid, Table, Label, Input, Header } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import Notenschnitt from './components/Notenschnitt'
 import AddFutureExams from './components/AddFutureExams'
@@ -28,10 +28,10 @@ class App extends Component {
             return (
                 <Container>
                     <Grid>
-                        <Grid.Column width={10}>
+                        <Grid.Column mobile={16} tablet={10} computer={10}>
                             <AddedExams store={this.props.store} />
                             <Header as='h3'>Angemeldete aber noch nicht bewertete Leistungen</Header>
-                            <Table className='notentabelle' celled>
+                            <Table className='notentabelle unstackable' celled>
                                 <Table.Header>
                                     <Table.Row>
                                         <Table.HeaderCell>Modul</Table.HeaderCell>
@@ -58,7 +58,7 @@ class App extends Component {
                                 </Table.Body>
                             </Table>
                             <Header as='h3'>Bestandene Leistungen</Header>
-                            <Table className='notentabelle' celled>
+                            <Table className='notentabelle unstackable' celled>
                                 <Table.Header>
                                     <Table.Row>
                                         <Table.HeaderCell>Modul</Table.HeaderCell>
