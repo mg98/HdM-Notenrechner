@@ -72,8 +72,14 @@ class EctsAnzeige extends Component {
                             </Card.Header>
                         </Card.Content>
                         <Card.Content id="ectsAnzeige">
-                            <p>Mit angemeldeten Leistungen: {this.state.ects + this.state.angemeldeteEcts} / {7*30} ECTS</p>
-                            <p>Mit geplanten Leistungen: {this.state.ects + this.state.angemeldeteEcts + this.state.geplanteEcts} / {7*30} ECTS</p>
+                            <p>
+                                Mit angemeldeten Leistungen:
+                                <span className='right floated'>{this.state.ects + this.state.angemeldeteEcts} / {7*30} ECTS</span>
+                            </p>
+                            <p>
+                                Mit geplanten Leistungen:
+                                <span className='right floated'>{this.state.ects + this.state.angemeldeteEcts + this.state.geplanteEcts} / {7*30} ECTS</span>
+                            </p>
                         </Card.Content>
                     </Card>
                 </Responsive>

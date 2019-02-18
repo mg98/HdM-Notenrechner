@@ -7,14 +7,14 @@
   position: fixed;
 }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 768px) {
   #sidebar .card {
     width: 400px;
     right: 40px;
   }
 
   #ectsAnzeigeCard {
-    top: 142px;
+    top: 150px;
   }
 
   #addFutureExamsCard {
@@ -31,7 +31,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #sidebar .card {
     left: 0;
     bottom: 0;
