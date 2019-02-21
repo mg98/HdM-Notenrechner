@@ -105,6 +105,7 @@ class LoginForm extends Component {
                                     iconPosition='left'
                                     placeholder='HdM-Kürzel'
                                     onChange={this.changeUsername}
+                                    required
                                 />
                                 <Form.Input
                                     fluid
@@ -113,6 +114,7 @@ class LoginForm extends Component {
                                     placeholder='Passwort'
                                     type='password'
                                     onChange={this.changePassword}
+                                    required
                                 />
 
                                 <Button fluid size='large' onClick={this.login}>
