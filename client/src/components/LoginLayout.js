@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Modal, List, Icon, Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import logo from '../hdm-logo.jpg'
 
 const API_URL = process.env.REACT_APP_API_URL || '/api/';
+const githubUrl = 'https://github.com/mg98/HdM-Notenrechner'
 
 class LoginForm extends Component {
 
@@ -13,7 +14,9 @@ class LoginForm extends Component {
             username: '',
             password: '',
             errorMessage: null,
-            loading: false
+            loading: false,
+            showDatenschutz: false,
+            showImpressum: false
         };
     }
 
@@ -83,8 +86,8 @@ class LoginForm extends Component {
         return (
             <div id='login-form'>
                 <style>{`
-                  body > div,
-                  body > div > div,
+                  body > div:not(.modal),
+                  body > div > div:not(.modal),
                   body > div > div > div.login-form {
                     height: 100%;
                   }
@@ -118,6 +121,57 @@ class LoginForm extends Component {
                             </Segment>
                         </Form>
                         {message}
+
+                        <List id='footer-links' bulleted horizontal>
+
+                            <List.Item as='a' href='{githubUrl}' target='_blank'>
+                                <Icon name='github' /> GitHub
+                            </List.Item>
+
+                            <Modal basic size='small' closeIcon trigger={<List.Item as='a'>Datenschutz</List.Item>}>
+                                <Header icon='browser' content='Hinweise zur Sicherheit und zum Datenschutz' />
+                                <Modal.Content>
+                                    <Modal.Description>
+                                        <p>Ist es sicher meine HdM-Daten hier einzugeben?</p>
+                                        <p>Sehr sicher!</p>
+                                        <List bulleted>
+                                            <List.Item>
+                                                Notenrechner.io verarbeitet deine Daten nur im Moment der Verbindung
+                                                mit dem Server von hdm-stuttgart.de. Deine Login-Daten werden zu keinem
+                                                Zeitpunkt weder client- noch serverseitig gespeichert!
+                                            </List.Item>
+                                            <List.Item>Alle Verbindungen sind mit SSL verschlüsselt!</List.Item>
+                                            <List.Item>
+                                                100% Transparenz - Der originale auf notenrechner.io zum Einsatz
+                                                kommende Source Code ist auf <a href="{githubUrl}" target='_blank'>GitHub</a> einsehbar!
+                                            </List.Item>
+                                            <List.Item>
+                                                Hoher Sicherheitsstandard bei der Server-Konfiguration
+                                            </List.Item>
+                                        </List>
+                                        <br/>
+                                        <p>Welche Daten werden gespeichert?</p>
+                                        <p>
+                                            Aus Sicherheitsgründen wird in unseren Server-Log-Dateien ein notwendiges
+                                            Minimum an Daten aufgezeichnet. Diese beinhalten:
+                                        </p>
+                                        <List bulleted>
+                                            <List.Item>Datum und Uhrzeit der Server-Anfrage</List.Item>
+                                            <List.Item>Browsertyp und Browserversion (User Agent)</List.Item>
+                                            <List.Item>Deine IP-Adresse</List.Item>
+                                        </List>
+                                        <p>
+                                            Diese Daten werden nicht und können auch nachträglich nicht in Verbindung
+                                            gebracht werden mit den auf der Webseite verwendeten HdM-Nutzerdaten!
+                                        </p>
+                                        <p>Wir speichern auch keine Cookies!</p>
+                                    </Modal.Description>
+                                </Modal.Content>
+                            </Modal>
+
+                            <List.Item as='a' href='http://gregoriadis.de/' target='_blank'>Impressum</List.Item>
+
+                        </List>
                     </Grid.Column>
                 </Grid>
             </div>
