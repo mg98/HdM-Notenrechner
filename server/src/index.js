@@ -20,9 +20,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors())
 
-log.debug('Creating server')
-
 app.post('/api', (req, res) => {
+    log.debug('Incoming /api request')
+
     const options = {
         followAllRedirects: true,
         method: 'POST',
@@ -167,5 +167,5 @@ app.post('/api', (req, res) => {
 })
 
 app.listen(port);
-log.debug('Server listening')
+log.debug('Server started')
 console.log('Server listening on port ' + port)
