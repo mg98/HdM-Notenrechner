@@ -43,6 +43,12 @@ class LoginForm extends Component {
             referrer: "no-referrer", // no-referrer, *client
             body: JSON.stringify({username: this.state.username, password: this.state.password}), // body data type must match "Content-Type" header
         })
+        .then(res => {
+            if (!res.ok) {
+                throw Error(res.statusText);
+            }
+            return res;
+        })
         .then(res => res.json())
         .then(res => {
             this.props.store.loggedIn = true
@@ -56,10 +62,9 @@ class LoginForm extends Component {
                 loading: false
             })
         }).catch(err => {
-            console.log("error zurueckgeworfen");
-            console.log(err);
+            console.log("halloo", err);
             this.setState({
-                errorMessage: err.response ? err.response.statusText : 'Unbekannter Fehler',
+                errorMessage: err ? err.message : 'Unbekannter Fehler',
                 loading: false
             });
         })
