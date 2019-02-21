@@ -109,6 +109,10 @@
   cursor: pointer;
 }
 
+.option-label {
+  margin-left: 8px;
+}
+
 @media only screen and (max-width: 1120px) {
   #sidebar .card {
     width: 350px;

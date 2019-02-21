@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Dropdown, Button, Icon } from 'semantic-ui-react';
+import { Dropdown, Button, Icon, Label } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 
 class NewExamSelection extends Component {
@@ -55,7 +55,10 @@ class NewExamSelection extends Component {
                 courses.push({
                     key: course.edvNr,
                     value: course.edvNr,
-                    text: course.name
+                    text: course.name,
+
+                    name: course.name,
+                    ects: course.ects
                 })
             }
         }
@@ -116,7 +119,18 @@ class NewExamSelection extends Component {
                                       placeholder='Modul auswählen'
                                       options={this.state.coursesOptions}
                                       value={this.state.selectedCourse}
-                                      onChange={this.updateSelectedCourse} />
+                                      onChange={this.updateSelectedCourse}>
+                                <Dropdown.Menu>
+                                    {this.state.coursesOptions.map((course, index) => {
+                                        return (
+                                            <Dropdown.Item>
+                                                {course.name}
+                                                <Label className='option-label' circular>{course.ects}</Label>
+                                            </Dropdown.Item>
+                                        )
+                                    })}
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </td>
                         <td>
                             <Icon name='plus circle' onClick={this.addExam} />
