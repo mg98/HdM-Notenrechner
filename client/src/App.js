@@ -49,7 +49,7 @@ class App extends Component {
                                                 <Table.Cell>
                                                     <Input className="noteInput" type="number" steps="0.3"
                                                        onChange={this.handleNoteChange.bind(this, index)}
-                                                       value={leistung.note}
+                                                       value={leistung.note || ''}
                                                     />
                                                 </Table.Cell>
                                             </Table.Row>

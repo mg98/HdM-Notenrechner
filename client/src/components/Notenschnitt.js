@@ -15,12 +15,14 @@ class Notenschnitt extends Component {
     constructor(props) {
         super(props);
 
-        this.calculate(this.props.store.leistungen);
-
         props.store.subscribe(store => {
             this.setState({ store: store });
             this.calculate(store.leistungen);
         });
+    }
+
+    componentDidMount() {
+        this.calculate(this.props.store.leistungen);
     }
 
     calculate = (leistungen) => {
