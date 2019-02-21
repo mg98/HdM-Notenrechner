@@ -56,9 +56,12 @@ class NewExamSelection extends Component {
                     key: course.edvNr,
                     value: course.edvNr,
                     text: course.name,
-
-                    name: course.name,
-                    ects: course.ects
+                    content: (
+                        <span>
+                            {course.name}
+                            <Label className='option-label' circular>{course.ects}</Label>
+                        </span>
+                    )
                 })
             }
         }
@@ -119,18 +122,7 @@ class NewExamSelection extends Component {
                                       placeholder='Modul auswählen'
                                       options={this.state.coursesOptions}
                                       value={this.state.selectedCourse}
-                                      onChange={this.updateSelectedCourse}>
-                                <Dropdown.Menu>
-                                    {this.state.coursesOptions.map((course, index) => {
-                                        return (
-                                            <Dropdown.Item>
-                                                {course.name}
-                                                <Label className='option-label' circular>{course.ects}</Label>
-                                            </Dropdown.Item>
-                                        )
-                                    })}
-                                </Dropdown.Menu>
-                            </Dropdown>
+                                      onChange={this.updateSelectedCourse} />
                         </td>
                         <td>
                             <Icon name='plus circle' onClick={this.addExam} />

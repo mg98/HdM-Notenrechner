@@ -109,8 +109,12 @@
   cursor: pointer;
 }
 
-.option-label {
-  margin-left: 8px;
+#addFutureExams .option-label {
+  margin-left: 5px;
+}
+
+#addFutureExams {
+
 }
 
 @media only screen and (max-width: 1120px) {
