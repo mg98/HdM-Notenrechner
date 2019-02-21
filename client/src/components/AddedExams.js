@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Table, Grid, Header, Input} from 'semantic-ui-react';
+import {Table, Icon, Header, Input} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css';
 
@@ -17,6 +17,11 @@ class AddedExams extends Component {
         this.props.store.leistungen.hinzugefuegt[index].note = e.target.value;
         this.props.store.notify();
     };
+
+    removeAdded = (index, e) => {
+        this.props.store.leistungen.hinzugefuegt.splice(index, 1);
+        this.props.store.notify();
+    }
 
     render() {
         if (this.props.store.leistungen.hinzugefuegt.length > 0) {
@@ -36,7 +41,10 @@ class AddedExams extends Component {
                             {this.props.store.leistungen.hinzugefuegt.map((leistung, index) => {
                                 return (
                                     <Table.Row key={index}>
-                                        <Table.Cell>{leistung.name}</Table.Cell>
+                                        <Table.Cell>
+                                            <Icon name='remove' onClick={this.removeAdded.bind(this, index)} />
+                                            {leistung.name}
+                                        </Table.Cell>
                                         <Table.Cell>{leistung.ects}</Table.Cell>
                                         <Table.Cell>
                                             <Input className="noteInput" type="number" steps="0.3"

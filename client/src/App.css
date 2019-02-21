@@ -6,14 +6,6 @@
   position: fixed;
 }
 
-#root table tr td:nth-child(2) {
-  width: 75px;
-}
-
-#root table tr td:last-child {
-  width: 100px;
-}
-
 @media only screen and (min-width: 768px) {
   #sidebar .card {
     width: 400px;
@@ -68,11 +60,11 @@
 }
 
 
-.ui.celled.table.notentabelle thead {
+#root .notentabelle thead {
   background: #d0313c;
 }
 
-.ui.celled.table.notentabelle th {
+#root .notentabelle th {
   background: #d0313c;
   color: white;
 }
@@ -81,8 +73,11 @@
   width: 70px;
 }
 
-.notentabelle tr > td:last-child,
-.notentabelle tr > td:nth-last-child(1) {
+#root .notentabelle tr > td:nth-last-child(2){
+  width: 75px;
+}
+
+#root .notentabelle tr > td:last-child{
   width: 100px;
 }
 
@@ -118,6 +113,10 @@
 
 #addFutureExams .option-label {
   margin-left: 5px;
+}
+
+.notentabelle .remove.icon {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1120px) {
