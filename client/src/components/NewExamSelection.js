@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Dropdown, Button, Icon, Label } from 'semantic-ui-react';
+import {Dropdown, Button, Icon, Label, Responsive} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 
 class NewExamSelection extends Component {
@@ -103,12 +103,12 @@ class NewExamSelection extends Component {
     render() {
         return (
             <table id='newExamSelection'>
-                <thead>
+                <Responsive minWidth={768} as='thead'>
                     <tr>
                         <th>Studieng.</th>
                         <th>Modul</th>
                     </tr>
-                </thead>
+                </Responsive>
                 <tbody>
                     <tr>
                         <td className='studiesDropdownWrapper'>

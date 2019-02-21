@@ -4,6 +4,7 @@ import logo from '../hdm-logo.jpg'
 
 const API_URL = process.env.REACT_APP_API_URL || '/api/';
 const githubUrl = 'https://github.com/mg98/HdM-Notenrechner'
+const impressumUrl = 'http://gregoriadis.de/'
 
 class LoginForm extends Component {
 
@@ -126,7 +127,7 @@ class LoginForm extends Component {
 
                         <List id='footer-links' bulleted horizontal>
 
-                            <List.Item as='a' href='{githubUrl}' target='_blank'>
+                            <List.Item as='a' href={githubUrl} target='_blank'>
                                 <Icon name='github' /> GitHub
                             </List.Item>
 
@@ -145,7 +146,7 @@ class LoginForm extends Component {
                                             <List.Item>Alle Verbindungen sind mit SSL verschlüsselt!</List.Item>
                                             <List.Item>
                                                 100% Transparenz - Der originale auf notenrechner.io zum Einsatz
-                                                kommende Source Code ist auf <a href="{githubUrl}" target='_blank'>GitHub</a> einsehbar!
+                                                kommende Source Code ist auf <a href={githubUrl} target='_blank'>GitHub</a> einsehbar!
                                             </List.Item>
                                             <List.Item>
                                                 Hoher Sicherheitsstandard bei der Server-Konfiguration
@@ -155,7 +156,7 @@ class LoginForm extends Component {
                                         <p>Welche Daten werden gespeichert?</p>
                                         <p>
                                             Aus Sicherheitsgründen wird in unseren Server-Log-Dateien ein notwendiges
-                                            Minimum an Daten aufgezeichnet. Diese beinhalten:
+                                            Minimum an Daten aufgezeichnet. Dieses beinhaltet:
                                         </p>
                                         <List bulleted>
                                             <List.Item>Datum und Uhrzeit der Server-Anfrage</List.Item>
@@ -171,7 +172,7 @@ class LoginForm extends Component {
                                 </Modal.Content>
                             </Modal>
 
-                            <List.Item as='a' href='http://gregoriadis.de/' target='_blank'>Impressum</List.Item>
+                            <List.Item as='a' href={impressumUrl} target='_blank'>Impressum</List.Item>
 
                         </List>
                     </Grid.Column>
