@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Table, Icon, Header, Input} from 'semantic-ui-react';
+import { Table, Icon, Header, Input, Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css';
 
@@ -10,17 +10,17 @@ class AddedExams extends Component {
 
         props.store.subscribe(store => {
             this.setState({ store: store });
-        });
+        })
     }
 
-    handleNoteChange = (index, e) => {
-        this.props.store.leistungen.hinzugefuegt[index].note = e.target.value;
-        this.props.store.notify();
+    handleNoteChange = (index, event, { value }) => {
+        this.props.store.leistungen.hinzugefuegt[index].note = value
+        this.props.store.notify()
     };
 
-    removeAdded = (index, e) => {
-        this.props.store.leistungen.hinzugefuegt.splice(index, 1);
-        this.props.store.notify();
+    removeAdded = (index) => {
+        this.props.store.leistungen.hinzugefuegt.splice(index, 1)
+        this.props.store.notify()
     }
 
     render() {
@@ -47,10 +47,10 @@ class AddedExams extends Component {
                                         </Table.Cell>
                                         <Table.Cell>{leistung.ects}</Table.Cell>
                                         <Table.Cell>
-                                            <Input className="noteInput" type="number" steps="0.3"
-                                                   onChange={this.handleNoteChange.bind(this, index)}
-                                                   value={leistung.note}
-                                            />
+                                            <Dropdown fluid search selection placeholder='Note'
+                                                      options={this.props.notenOptions}
+                                                      value={leistung.note}
+                                                      onChange={this.handleNoteChange.bind(this, index)} />
                                         </Table.Cell>
                                     </Table.Row>
                                 )

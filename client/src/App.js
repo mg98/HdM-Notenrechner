@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Responsive, Segment, Container, Grid, Table, Label, Input, Header } from 'semantic-ui-react';
+import {Responsive, Segment, Container, Grid, Table, Label, Input, Header, Dropdown} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import Notenschnitt from './components/Notenschnitt'
 import AddFutureExams from './components/AddFutureExams'
@@ -16,8 +16,8 @@ class App extends Component {
         props.store.subscribe(store => this.setState({ store: store }));
     }
 
-    handleNoteChange = (index, e) => {
-        this.props.store.leistungen.angemeldet[index].note = e.target.value;
+    handleNoteChange = (index, event, { value }) => {
+        this.props.store.leistungen.angemeldet[index].note = value;
         this.props.store.notify();
     };
 
@@ -29,7 +29,7 @@ class App extends Component {
                 <Container>
                     <Grid>
                         <Grid.Column mobile={16} tablet={10} computer={10}>
-                            <AddedExams store={this.props.store} />
+                            <AddedExams notenOptions={this.props.notenOptions} store={this.props.store} />
                             <Header as='h3'>Angemeldete aber noch nicht bewertete Leistungen</Header>
                             <Table className='notentabelle unstackable' celled>
                                 <Table.Header>
@@ -47,10 +47,10 @@ class App extends Component {
                                                 <Table.Cell>{leistung.name}</Table.Cell>
                                                 <Table.Cell>{leistung.ects}</Table.Cell>
                                                 <Table.Cell>
-                                                    <Input className="noteInput" type="number" steps="0.3"
-                                                       onChange={this.handleNoteChange.bind(this, index)}
-                                                       value={leistung.note || ''}
-                                                    />
+                                                    <Dropdown fluid search selection placeholder='Note'
+                                                              options={this.props.notenOptions}
+                                                              onChange={this.handleNoteChange.bind(this, index)}
+                                                              value={leistung.note || '-'} />
                                                 </Table.Cell>
                                             </Table.Row>
                                         )
