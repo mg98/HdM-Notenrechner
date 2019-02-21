@@ -18,7 +18,7 @@ class AddedExams extends Component {
         this.props.store.notify();
     };
 
-    removeAdded = (index) => {
+    removeAdded = (index, e) => {
         this.props.store.leistungen.hinzugefuegt.splice(index, 1);
         this.props.store.notify();
     }
@@ -42,7 +42,7 @@ class AddedExams extends Component {
                                 return (
                                     <Table.Row key={index}>
                                         <Table.Cell>
-                                            <Icon name='remove' onClick={this.removeAdded.bind(index)} />
+                                            <Icon name='remove' onClick={this.removeAdded.bind(this, index)} />
                                             {leistung.name}
                                         </Table.Cell>
                                         <Table.Cell>{leistung.ects}</Table.Cell>
