@@ -144,3 +144,8 @@
     top: 448px;
   }
 }
+
+#mobile-scroll-fix {
+  width: 100%;
+  height: 260px;
+}

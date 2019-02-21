@@ -79,6 +79,8 @@ class App extends Component {
                                     })}
                                 </Table.Body>
                             </Table>
+
+                            <Responsive id='mobile-scroll-fix' {...Responsive.onlyMobile} />
                         </Grid.Column>
                         <Grid.Column id='sidebar' width={6}>
                             <Notenschnitt store={this.props.store} />
