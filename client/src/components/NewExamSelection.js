@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Dropdown, Button, Icon } from 'semantic-ui-react';
+import { Dropdown, Button, Icon, Label } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 
 class NewExamSelection extends Component {
@@ -55,7 +55,13 @@ class NewExamSelection extends Component {
                 courses.push({
                     key: course.edvNr,
                     value: course.edvNr,
-                    text: course.name
+                    text: course.name,
+                    content: (
+                        <span>
+                            {course.name}
+                            <Label className='option-label' circular>{course.ects}</Label>
+                        </span>
+                    )
                 })
             }
         }
