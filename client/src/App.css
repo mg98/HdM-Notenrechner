@@ -2,9 +2,16 @@
   margin-top: 20px;
 }
 
-
 #sidebar .card {
   position: fixed;
+}
+
+#root table tr td:nth-child(2) {
+  width: 75px;
+}
+
+#root table tr td:last-child {
+  width: 100px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -71,7 +78,7 @@
 }
 
 .noteInput {
-  width: 75px;
+  width: 70px;
 }
 
 .notentabelle tr > td:last-child,
@@ -111,10 +118,6 @@
 
 #addFutureExams .option-label {
   margin-left: 5px;
-}
-
-#addFutureExams {
-
 }
 
 @media only screen and (max-width: 1120px) {
