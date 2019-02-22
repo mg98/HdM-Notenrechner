@@ -1,0 +1,22 @@
+version: '2'
+services:
+
+  server:
+    build: ./server
+    container_name: "notenrechner-api"
+    command: npm start
+    volumes:
+    - ./server:/usr/src/app/server
+    ports:
+    - 3000:3000
+
+  client:
+    build: ./client
+    container_name: "notenrechner-client"
+    command: npm start
+    volumes:
+    - ./client:/usr/src/app/client
+    ports:
+    - 8080:8080
+    links:
+    - server

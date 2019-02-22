@@ -1,0 +1,164 @@
+#root {
+  margin-top: 20px;
+}
+
+#sidebar .card {
+  position: fixed;
+}
+
+@media only screen and (min-width: 768px) {
+  #sidebar .card {
+    width: 400px;
+    right: 40px;
+  }
+
+  #ectsAnzeigeCard {
+    top: 150px;
+  }
+
+  #addFutureExamsCard {
+    top: 428px;
+  }
+
+  #notenschnitt {
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .notenschnitt-end {
+    color: #A7A7A7;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #sidebar .card {
+    left: 0;
+    bottom: 0;
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  #sidebar .card .header {
+    font-size: 14px;
+  }
+
+  #sidebar .card th {
+    font-size: 12px;
+  }
+
+}
+
+#sidebar #notenschnittCard-mobile {
+  bottom: 235px;
+}
+
+#sidebar #ectsAnzeigeCard-mobile {
+  bottom: 117px;
+}
+
+
+#root .notentabelle thead {
+  background: #d0313c;
+}
+
+#root .notentabelle th {
+  background: #d0313c;
+  color: white;
+}
+
+.noteInput {
+  width: 70px;
+}
+
+#root .notentabelle tr > td:nth-last-child(2){
+  width: 75px;
+}
+
+#root .notentabelle tr > td:last-child{
+  width: 100px;
+}
+
+#newExamSelection tr > td:first-child {
+  width: 80px;
+}
+
+#newExamSelection tr > td:nth-child(2) {
+  width: 100%;
+}
+
+#newExamSelection th {
+  font-weight: bold;
+  text-align: left;
+}
+
+#login-form button {
+  background-color: #d0313c;
+  color: white;
+}
+
+#login-form h2 {
+  color: #404847;
+}
+
+
+#addFutureExams i.plus.circle {
+  font-size: 24px;
+  color: #16AB39;
+  margin: 4px 0 0 0;
+  cursor: pointer;
+}
+
+#addFutureExams .option-label {
+  margin-left: 5px;
+}
+
+.notentabelle .remove.icon {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1120px) {
+  #sidebar .card {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  #sidebar .card {
+    width: 250px;
+  }
+
+  #addFutureExamsCard {
+    top: 448px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #sidebar .card {
+    width: 250px;
+  }
+
+  #addFutureExamsCard {
+    top: 448px;
+  }
+}
+
+#mobile-scroll-fix {
+  width: 100%;
+  height: 260px;
+}
+
+#footer-links {
+  margin-top: 10px;
+}
+
+#footer-links a.item:before {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.modal.basic {
+  font-weight: bold;
+}
+
+.modals.ui.dimmer {
+  background-color: rgba(0,0,0,.90);
+}

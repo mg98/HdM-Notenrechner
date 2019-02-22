@@ -1,0 +1,7 @@
+.idea
+node_modules
+#storage/*
+#!storage/.gitkeep
+storage/hdm-module.json
+.DS_Store
+server.log
