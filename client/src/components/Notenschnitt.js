@@ -103,7 +103,7 @@ class Notenschnitt extends Component {
                     </Card>
                 </Responsive>
                 <Responsive {...Responsive.onlyMobile}>
-                    <Card id='notenschnittCard-mobile'>
+                    <Card id='notenschnittCard-mobile' className={this.props.store.showAddContent ? 'pushup' : ''}>
                         <Card.Content>
                             <Card.Header>
                                 Durchschnitt:

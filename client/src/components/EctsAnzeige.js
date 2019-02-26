@@ -66,22 +66,12 @@ class EctsAnzeige extends Component {
                     </Card>
                 </Responsive>
                 <Responsive {...Responsive.onlyMobile}>
-                    <Card id='ectsAnzeigeCard-mobile'>
+                    <Card id='ectsAnzeigeCard-mobile' className={this.props.store.showAddContent ? 'pushup' : ''}>
                         <Card.Content>
                             <Card.Header>
                                 ECTS:
                                 <span className='right floated'>{this.state.ects} / {7*30}</span>
                             </Card.Header>
-                        </Card.Content>
-                        <Card.Content id="ectsAnzeige">
-                            <p>
-                                Mit angemeldeten Leistungen:
-                                <span className='right floated'>{this.state.ects + this.state.angemeldeteEcts} / {7*30} ECTS</span>
-                            </p>
-                            <p>
-                                Mit geplanten Leistungen:
-                                <span className='right floated'>{this.state.ects + this.state.angemeldeteEcts + this.state.geplanteEcts} / {7*30} ECTS</span>
-                            </p>
                         </Card.Content>
                     </Card>
                 </Responsive>

@@ -8,6 +8,7 @@ utils.createStore = function() {
         alleModule: [],
         leistungen: {},
         loggedIn: false,
+        showAddContent: false,
         subscribers: [],
         subscribe: function(s) {
             this.subscribers.push(s);
