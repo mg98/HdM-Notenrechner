@@ -22,7 +22,7 @@ class Notenschnitt extends Component {
     }
 
     componentDidMount() {
-        this.calculate(this.props.store.leistungen);
+        this.calculate(this.props.store.leistungen)
     }
 
     calculate = (leistungen) => {
@@ -31,8 +31,11 @@ class Notenschnitt extends Component {
 
         for (const i in leistungen.bestanden) {
             const leistung = leistungen.bestanden[i];
-            notenSumme += leistung.ects * leistung.note;
-            ectsSumme += leistung.ects;
+            console.log(leistung)
+            if (leistung.note && leistung.note !== '' && !isNaN(leistung.note)) {
+                notenSumme += leistung.ects * leistung.note
+                ectsSumme += leistung.ects
+            }
         }
 
         const alleLeistungen = leistungen.angemeldet.concat(leistungen.hinzugefuegt).concat(leistungen.mandatoryExams)
