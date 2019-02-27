@@ -172,7 +172,7 @@ class LoginForm extends Component {
                                 </Modal.Content>
                             </Modal>
 
-                            <List.Item as='a' href={impressumUrl} target='_blank'>Impressum</List.Item>
+                            <List.Item as='a' href={impressumUrl}>Impressum</List.Item>
 
                         </List>
                     </Grid.Column>

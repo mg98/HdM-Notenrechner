@@ -145,6 +145,23 @@ app.post('/api', (req, res) => {
                     }
                 }
 
+                // Get mandatory exams that have not been signed up yet
+                const mandatoryExams = hdmModule[studies].filter(l => {
+                    console.log(l)
+                    // Can be only moduls from Grundstudium or Pflicht and may not occur in bestanden or angemeldet
+                    return (l.sort === 'grund' || l.sort === 'pflicht')
+                        && l.ects > 0
+                        && bestanden.filter(l2 => l2.edvNr === l.edvNr).length === 0
+                        && angemeldet.filter(l2 => l2.edvNr === l.edvNr).length === 0
+                })
+
+                // Sort so that moduls from "Grundstudium" appear first
+                mandatoryExams.sort((a, b) => {
+                    if (a.sort === 'grund' && b.sort === 'grund') return 0
+                    if (a.sort === 'grund') return -1
+                    return 1
+                })
+
                 res.writeHead(200, {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin' : '*',
@@ -157,7 +174,8 @@ app.post('/api', (req, res) => {
                     alleModule: hdmModule,
                     leistungen: {
                         bestanden: bestanden,
-                        angemeldet: angemeldet
+                        angemeldet: angemeldet,
+                        mandatoryExams: mandatoryExams
                     }
                 }));
                 console.log('reply')

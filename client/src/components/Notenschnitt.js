@@ -35,24 +35,14 @@ class Notenschnitt extends Component {
             ectsSumme += leistung.ects;
         }
 
-        for (const i in leistungen.angemeldet) {
-            const leistung = leistungen.angemeldet[i];
+        const alleLeistungen = leistungen.angemeldet.concat(leistungen.hinzugefuegt).concat(leistungen.mandatoryExams)
+        for (const i in alleLeistungen) {
+            const leistung = alleLeistungen[i]
             if (leistung.note && leistung.note !== '') {
                 const note = parseInt(leistung.note.replace(',', '.'));
                 if (!isNaN(note)) {
-                    notenSumme += leistung.ects * leistung.note;
-                    ectsSumme += leistung.ects;
-                }
-            }
-        }
-
-        for (const i in leistungen.hinzugefuegt) {
-            const leistung = leistungen.hinzugefuegt[i];
-            if (leistung.note && leistung.note !== '') {
-                const note = parseInt(leistung.note.replace(',', '.'));
-                if (!isNaN(note)) {
-                    notenSumme += leistung.ects * leistung.note;
-                    ectsSumme += leistung.ects;
+                    notenSumme += leistung.ects * leistung.note
+                    ectsSumme += leistung.ects
                 }
             }
         }

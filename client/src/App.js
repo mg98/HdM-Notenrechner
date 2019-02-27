@@ -7,6 +7,7 @@ import AddFutureExams from './components/AddFutureExams'
 import LoginForm from './components/LoginLayout';
 import EctsAnzeige from "./components/EctsAnzeige";
 import AddedExams from "./components/AddedExams";
+import MandatoryExams from "./components/MandatoryExams";
 
 class App extends Component {
 
@@ -30,6 +31,7 @@ class App extends Component {
                     <Grid>
                         <Grid.Column mobile={16} tablet={10} computer={10}>
                             <AddedExams notenOptions={this.props.notenOptions} store={this.props.store} />
+                            <MandatoryExams notenOptions={this.props.notenOptions} store={this.props.store} />
                             <Header as='h3'>Angemeldete aber noch nicht bewertete Leistungen</Header>
                             <Table className='notentabelle unstackable' celled>
                                 <Table.Header>
