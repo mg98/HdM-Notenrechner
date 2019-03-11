@@ -1,9 +1,14 @@
 #root {
   margin-top: 20px;
+  font-size: 12px;
 }
 
 #sidebar .card {
   position: fixed;
+}
+
+.text-bold {
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 768px) {
@@ -13,11 +18,11 @@
   }
 
   #ectsAnzeigeCard {
-    top: 150px;
+    top: 145px;
   }
 
   #addFutureExamsCard {
-    top: 428px;
+    top: 376px;
   }
 
   #notenschnitt {
@@ -145,9 +150,11 @@
   #sidebar .card {
     width: 250px;
   }
+}
 
+@media only screen and (min-width: 961px) {
   #addFutureExamsCard {
-    top: 448px;
+    top: 359px;
   }
 }
 

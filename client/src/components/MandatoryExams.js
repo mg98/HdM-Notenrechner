@@ -22,7 +22,7 @@ class MandatoryExams extends Component {
         if (this.props.store.leistungen.mandatoryExams.length > 0) {
             return (
                 <div>
-                    <Header as='h3' title='Aus Grundstudium und Wahlpflicht'>Übrige Pflichtmodule</Header>
+                    <Header as='h4' title='Aus Grundstudium und Wahlpflicht'>Übrige Pflichtmodule</Header>
                     <Table className='notentabelle unstackable' celled>
                         <Table.Header>
                             <Table.Row>

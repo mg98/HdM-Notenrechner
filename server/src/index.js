@@ -40,7 +40,17 @@ app.post('/api', (req, res) => {
                 'cache-control': 'no-cache' } };
 
     request(options, function (error, response, body) {
-        if (error) throw new Error(error);
+        if (error) {
+            const errorMsg = 'Es konnte keine Verbindung zur HdM-Webseite hergestellt werden.'
+            res.writeHead(500, errorMsg, {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : '*',
+                'Access-Control-Allow-Methods': 'POST'
+            });
+
+            res.end();
+            return;
+        }
 
         const $ = cheerio.load(body);
         const pruefungsverwaltungUrl = $('#makronavigation > ul > li:nth-child(3) a').attr('href')

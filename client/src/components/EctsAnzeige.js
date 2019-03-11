@@ -55,13 +55,11 @@ class EctsAnzeige extends Component {
                         <Card.Content header="ECTS" />
                         <Card.Content id="ectsAnzeige">
                             <p>Fachsemester: {this.props.store.semester} (ideal {(this.props.store.semester - 1) * 30} ECTS)</p>
-                            <p>{this.state.ects} / {7*30} ECTS</p>
-                            <br/>
+                            <p className='text-bold'>{this.state.ects} / {7*30} ECTS</p>
                             <p>Bei Bestehen aller angemeldeten Leistungen:</p>
-                            <p>{this.state.ects + this.state.angemeldeteEcts} / {7*30} ECTS</p>
-                            <br/>
+                            <p className='text-bold'>{this.state.ects + this.state.angemeldeteEcts} / {7*30} ECTS</p>
                             <p>Mit geplanten Leistungen:</p>
-                            <p>{this.state.ects + this.state.angemeldeteEcts + this.state.geplanteEcts} / {7*30} ECTS</p>
+                            <p className='text-bold'>{this.state.ects + this.state.angemeldeteEcts + this.state.geplanteEcts} / {7*30} ECTS</p>
                         </Card.Content>
                     </Card>
                 </Responsive>

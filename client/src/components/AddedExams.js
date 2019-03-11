@@ -26,23 +26,24 @@ class AddedExams extends Component {
     render() {
         if (this.props.store.leistungen.hinzugefuegt.length > 0) {
             return (
-                <div>
-                    <Header as='h3'>Geplante Leistungen</Header>
-                    <Table className='notentabelle unstackable' celled>
+                <React.Fragment>
+                    <Header as='h4'>Geplante Leistungen</Header>
+                    <Table className='notentabelle unstackable' celled style={{marginBottom: '30px'}}>
                         <Table.Header>
-                        <Table.Row>
-                        <Table.HeaderCell>Modul</Table.HeaderCell>
-                        <Table.HeaderCell>ECTS</Table.HeaderCell>
-                        <Table.HeaderCell>Note</Table.HeaderCell>
-                    </Table.Row>
-                    </Table.Header>
-
+                            <Table.Row>
+                            <Table.HeaderCell>Modul</Table.HeaderCell>
+                            <Table.HeaderCell>ECTS</Table.HeaderCell>
+                            <Table.HeaderCell>Note</Table.HeaderCell>
+                        </Table.Row>
+                        </Table.Header>
                         <Table.Body>
                             {this.props.store.leistungen.hinzugefuegt.map((leistung, index) => {
                                 return (
                                     <Table.Row key={index}>
                                         <Table.Cell>
-                                            <Icon name='remove' onClick={this.removeAdded.bind(this, index)} />
+                                            <Icon name='remove'
+                                                  title='Entfernen'
+                                                  onClick={this.removeAdded.bind(this, index)} />
                                             {leistung.name}
                                         </Table.Cell>
                                         <Table.Cell>{leistung.ects}</Table.Cell>
@@ -57,7 +58,7 @@ class AddedExams extends Component {
                             })}
                         </Table.Body>
                     </Table>
-                </div>
+                </React.Fragment>
             )
         } else {
             return null

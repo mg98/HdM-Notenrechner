@@ -30,8 +30,7 @@ class Notenschnitt extends Component {
         let ectsSumme = 0;
 
         for (const i in leistungen.bestanden) {
-            const leistung = leistungen.bestanden[i];
-            console.log(leistung)
+            const leistung = leistungen.bestanden[i]
             if (leistung.note && leistung.note !== '' && !isNaN(leistung.note)) {
                 notenSumme += leistung.ects * leistung.note
                 ectsSumme += leistung.ects

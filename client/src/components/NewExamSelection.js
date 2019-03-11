@@ -39,7 +39,7 @@ class NewExamSelection extends Component {
     }
 
     examAlreadyAdded = (course) => {
-        const addedExams = this.props.store.leistungen.hinzugefuegt;
+        const addedExams = this.props.store.leistungen.hinzugefuegt.concat(this.props.store.leistungen.mandatoryExams)
         for (const i in addedExams) {
             if (addedExams[i].edvNr === course.edvNr) return true
         }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Modal, List, Icon, Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Link, Modal, List, Icon, Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import logo from '../hdm-logo.jpg'
 
 const API_URL = process.env.REACT_APP_API_URL || '/api/';
@@ -127,7 +127,7 @@ class LoginForm extends Component {
 
                         <List id='footer-links' bulleted horizontal>
 
-                            <List.Item as='a' href={githubUrl} target='_blank'>
+                            <List.Item as='a' href={githubUrl} target='_blank' rel='noopener noreferrer'>
                                 <Icon name='github' /> GitHub
                             </List.Item>
 
@@ -146,7 +146,9 @@ class LoginForm extends Component {
                                             <List.Item>Alle Verbindungen sind mit SSL verschlüsselt!</List.Item>
                                             <List.Item>
                                                 100% Transparenz - Der originale auf notenrechner.io zum Einsatz
-                                                kommende Source Code ist auf <a href={githubUrl} target='_blank'>GitHub</a> einsehbar!
+                                                kommende Source Code ist auf <a href={githubUrl}
+                                                                                   target='_blank'
+                                                                                   rel='noopener noreferrer'>GitHub</a> einsehbar!
                                             </List.Item>
                                             <List.Item>
                                                 Hoher Sicherheitsstandard bei der Server-Konfiguration
