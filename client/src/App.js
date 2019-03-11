@@ -9,6 +9,11 @@ import EctsAnzeige from "./components/EctsAnzeige";
 import AddedExams from "./components/AddedExams";
 import MandatoryExams from "./components/MandatoryExams";
 
+const examsWithoutGrade = [
+    'Praktisches Studiensemester',
+    'Anleitung zum wiss. Arb.'
+]
+
 class App extends Component {
 
     constructor(props) {
@@ -49,17 +54,19 @@ class App extends Component {
                                                 <Table.Cell>{leistung.name}</Table.Cell>
                                                 <Table.Cell>{leistung.ects}</Table.Cell>
                                                 <Table.Cell>
-                                                    <Dropdown fluid search selection placeholder='Note'
+                                                    {!examsWithoutGrade.includes(leistung.name) &&
+                                                        <Dropdown fluid search selection placeholder='Note'
                                                               options={this.props.notenOptions}
                                                               onChange={this.handleNoteChange.bind(this, index)}
                                                               value={leistung.note || '-'} />
+                                                    }
                                                 </Table.Cell>
                                             </Table.Row>
                                         )
                                     })}
                                 </Table.Body>
                             </Table>
-                            <Header as='h3'>Bestandene Leistungen</Header>
+                            <Header as='h4'>Bestandene Leistungen</Header>
                             <Table className='notentabelle unstackable' celled>
                                 <Table.Header>
                                     <Table.Row>
