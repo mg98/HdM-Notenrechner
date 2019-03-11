@@ -37,7 +37,7 @@ class App extends Component {
                         <Grid.Column mobile={16} tablet={10} computer={10}>
                             <AddedExams notenOptions={this.props.notenOptions} store={this.props.store} />
                             <MandatoryExams notenOptions={this.props.notenOptions} store={this.props.store} />
-                            <Header as='h3'>Angemeldete aber noch nicht bewertete Leistungen</Header>
+                            <Header as='h4'>Angemeldete aber noch nicht bewertete Leistungen</Header>
                             <Table className='notentabelle unstackable' celled>
                                 <Table.Header>
                                     <Table.Row>
@@ -66,7 +66,7 @@ class App extends Component {
                                     })}
                                 </Table.Body>
                             </Table>
-                            <Header as='h3'>Bestandene Leistungen</Header>
+                            <Header as='h4'>Bestandene Leistungen</Header>
                             <Table className='notentabelle unstackable' celled>
                                 <Table.Header>
                                     <Table.Row>
