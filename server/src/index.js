@@ -157,7 +157,6 @@ app.post('/api', (req, res) => {
 
                 // Get mandatory exams that have not been signed up yet
                 const mandatoryExams = hdmModule[studies].filter(l => {
-                    console.log(l)
                     // Can be only moduls from Grundstudium or Pflicht and may not occur in bestanden or angemeldet
                     return (l.sort === 'grund' || l.sort === 'pflicht')
                         && l.ects > 0
@@ -188,7 +187,6 @@ app.post('/api', (req, res) => {
                         mandatoryExams: mandatoryExams
                     }
                 }));
-                console.log('reply')
             })
         })
     })
