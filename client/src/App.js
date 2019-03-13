@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Responsive, Segment, Container, Grid, Table, Label, Input, Header, Dropdown} from 'semantic-ui-react';
+import {Responsive, Container, Grid, Table, Header, Dropdown} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import Notenschnitt from './components/Notenschnitt'
 import AddFutureExams from './components/AddFutureExams'
 import LoginForm from './components/LoginLayout';
 import EctsAnzeige from "./components/EctsAnzeige";
 import AddedExams from "./components/AddedExams";
+import MandatoryExams from "./components/MandatoryExams";
+
+const examsWithoutGrade = [
+    'Praktisches Studiensemester',
+    'Anleitung zum wiss. Arb.'
+]
 
 class App extends Component {
 
@@ -30,7 +36,8 @@ class App extends Component {
                     <Grid>
                         <Grid.Column mobile={16} tablet={10} computer={10}>
                             <AddedExams notenOptions={this.props.notenOptions} store={this.props.store} />
-                            <Header as='h3'>Angemeldete aber noch nicht bewertete Leistungen</Header>
+                            <MandatoryExams notenOptions={this.props.notenOptions} store={this.props.store} />
+                            <Header as='h4'>Angemeldete aber noch nicht bewertete Leistungen</Header>
                             <Table className='notentabelle unstackable' celled>
                                 <Table.Header>
                                     <Table.Row>
@@ -47,17 +54,19 @@ class App extends Component {
                                                 <Table.Cell>{leistung.name}</Table.Cell>
                                                 <Table.Cell>{leistung.ects}</Table.Cell>
                                                 <Table.Cell>
-                                                    <Dropdown fluid search selection placeholder='Note'
+                                                    {!examsWithoutGrade.includes(leistung.name) &&
+                                                        <Dropdown fluid search selection placeholder='Note'
                                                               options={this.props.notenOptions}
                                                               onChange={this.handleNoteChange.bind(this, index)}
-                                                              value={leistung.note || '-'} />
+                                                              value={leistung.note} />
+                                                    }
                                                 </Table.Cell>
                                             </Table.Row>
                                         )
                                     })}
                                 </Table.Body>
                             </Table>
-                            <Header as='h3'>Bestandene Leistungen</Header>
+                            <Header as='h4'>Bestandene Leistungen</Header>
                             <Table className='notentabelle unstackable' celled>
                                 <Table.Header>
                                     <Table.Row>

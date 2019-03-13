@@ -40,7 +40,17 @@ app.post('/api', (req, res) => {
                 'cache-control': 'no-cache' } };
 
     request(options, function (error, response, body) {
-        if (error) throw new Error(error);
+        if (error) {
+            const errorMsg = 'Es konnte keine Verbindung zur HdM-Webseite hergestellt werden.'
+            res.writeHead(500, errorMsg, {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : '*',
+                'Access-Control-Allow-Methods': 'POST'
+            });
+
+            res.end();
+            return;
+        }
 
         const $ = cheerio.load(body);
         const pruefungsverwaltungUrl = $('#makronavigation > ul > li:nth-child(3) a').attr('href')
@@ -145,6 +155,22 @@ app.post('/api', (req, res) => {
                     }
                 }
 
+                // Get mandatory exams that have not been signed up yet
+                const mandatoryExams = hdmModule[studies].filter(l => {
+                    // Can be only moduls from Grundstudium or Pflicht and may not occur in bestanden or angemeldet
+                    return (l.sort === 'grund' || l.sort === 'pflicht')
+                        && l.ects > 0
+                        && bestanden.filter(l2 => l2.edvNr === l.edvNr).length === 0
+                        && angemeldet.filter(l2 => l2.edvNr === l.edvNr).length === 0
+                })
+
+                // Sort so that moduls from "Grundstudium" appear first
+                mandatoryExams.sort((a, b) => {
+                    if (a.sort === 'grund' && b.sort === 'grund') return 0
+                    if (a.sort === 'grund') return -1
+                    return 1
+                })
+
                 res.writeHead(200, {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin' : '*',
@@ -157,10 +183,10 @@ app.post('/api', (req, res) => {
                     alleModule: hdmModule,
                     leistungen: {
                         bestanden: bestanden,
-                        angemeldet: angemeldet
+                        angemeldet: angemeldet,
+                        mandatoryExams: mandatoryExams
                     }
                 }));
-                console.log('reply')
             })
         })
     })

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
-import {Popup, Card, Responsive} from 'semantic-ui-react';
+import { Popup, Card, Responsive } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
-import EctsAnzeige from "../App";
-import {Grid} from "semantic-ui-react/dist/commonjs/collections/Grid";
 
 class Notenschnitt extends Component {
 
@@ -22,7 +20,7 @@ class Notenschnitt extends Component {
     }
 
     componentDidMount() {
-        this.calculate(this.props.store.leistungen);
+        this.calculate(this.props.store.leistungen)
     }
 
     calculate = (leistungen) => {
@@ -30,29 +28,21 @@ class Notenschnitt extends Component {
         let ectsSumme = 0;
 
         for (const i in leistungen.bestanden) {
-            const leistung = leistungen.bestanden[i];
-            notenSumme += leistung.ects * leistung.note;
-            ectsSumme += leistung.ects;
-        }
-
-        for (const i in leistungen.angemeldet) {
-            const leistung = leistungen.angemeldet[i];
-            if (leistung.note && leistung.note !== '') {
-                const note = parseInt(leistung.note.replace(',', '.'));
-                if (!isNaN(note)) {
-                    notenSumme += leistung.ects * leistung.note;
-                    ectsSumme += leistung.ects;
-                }
+            const leistung = leistungen.bestanden[i]
+            if (leistung.note && leistung.note !== '' && !isNaN(leistung.note)) {
+                notenSumme += leistung.ects * leistung.note
+                ectsSumme += leistung.ects
             }
         }
 
-        for (const i in leistungen.hinzugefuegt) {
-            const leistung = leistungen.hinzugefuegt[i];
+        const alleLeistungen = leistungen.angemeldet.concat(leistungen.hinzugefuegt).concat(leistungen.mandatoryExams)
+        for (const i in alleLeistungen) {
+            const leistung = alleLeistungen[i]
             if (leistung.note && leistung.note !== '') {
                 const note = parseInt(leistung.note.replace(',', '.'));
                 if (!isNaN(note)) {
-                    notenSumme += leistung.ects * leistung.note;
-                    ectsSumme += leistung.ects;
+                    notenSumme += leistung.ects * leistung.note
+                    ectsSumme += leistung.ects
                 }
             }
         }
@@ -103,7 +93,7 @@ class Notenschnitt extends Component {
                     </Card>
                 </Responsive>
                 <Responsive {...Responsive.onlyMobile}>
-                    <Card id='notenschnittCard-mobile'>
+                    <Card id='notenschnittCard-mobile' className={this.props.store.showAddContent ? 'pushup' : ''}>
                         <Card.Content>
                             <Card.Header>
                                 Durchschnitt:

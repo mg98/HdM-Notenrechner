@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import {Dropdown, Button, Icon, Label, Responsive} from 'semantic-ui-react';
+import { Dropdown, Icon, Label, Responsive } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 
 class NewExamSelection extends Component {
@@ -39,7 +39,7 @@ class NewExamSelection extends Component {
     }
 
     examAlreadyAdded = (course) => {
-        const addedExams = this.props.store.leistungen.hinzugefuegt;
+        const addedExams = this.props.store.leistungen.hinzugefuegt.concat(this.props.store.leistungen.mandatoryExams)
         for (const i in addedExams) {
             if (addedExams[i].edvNr === course.edvNr) return true
         }

@@ -1,9 +1,14 @@
 #root {
   margin-top: 20px;
+  font-size: 12px;
 }
 
 #sidebar .card {
   position: fixed;
+}
+
+.text-bold {
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 768px) {
@@ -13,11 +18,11 @@
   }
 
   #ectsAnzeigeCard {
-    top: 150px;
+    top: 145px;
   }
 
   #addFutureExamsCard {
-    top: 428px;
+    top: 376px;
   }
 
   #notenschnitt {
@@ -34,7 +39,6 @@
   #sidebar .card {
     left: 0;
     bottom: 0;
-    width: 100% !important;
     border-radius: 0 !important;
   }
 
@@ -48,14 +52,34 @@
 
 }
 
-#sidebar #notenschnittCard-mobile {
-  bottom: 235px;
+#sidebar #notenschnittCard-mobile,
+#sidebar #ectsAnzeigeCard-mobile {
+  bottom: 44px;
 }
 
-#sidebar #ectsAnzeigeCard-mobile {
+#sidebar #notenschnittCard-mobile.pushup,
+#sidebar #ectsAnzeigeCard-mobile.pushup {
   bottom: 117px;
 }
 
+#sidebar #notenschnittCard-mobile {
+  width: 50%;
+}
+
+#sidebar #ectsAnzeigeCard-mobile {
+  width: 50%;
+  left: 50%;
+}
+
+#sidebar #addFutureExamsCard-mobile {
+  width: 100%;
+}
+
+#sidebar #addFutureExamsCard-mobile i.angle {
+  float: right;
+  font-size: 18px;
+  cursor: pointer;
+}
 
 #root .notentabelle thead {
   background: #d0313c;
@@ -114,6 +138,11 @@
 
 .notentabelle .remove.icon {
   cursor: pointer;
+  color: #404847;
+}
+
+.notentabelle .remove.icon:active {
+  color: black;
 }
 
 @media only screen and (max-width: 1120px) {
@@ -125,10 +154,13 @@
 @media only screen and (max-width: 960px) {
   #sidebar .card {
     width: 250px;
+    font-size: 14px;
   }
+}
 
+@media only screen and (min-width: 961px) {
   #addFutureExamsCard {
-    top: 448px;
+    top: 359px;
   }
 }
 
@@ -144,7 +176,7 @@
 
 #mobile-scroll-fix {
   width: 100%;
-  height: 260px;
+  height: 45px;
 }
 
 #footer-links {
@@ -160,5 +192,5 @@
 }
 
 .modals.ui.dimmer {
-  background-color: rgba(0,0,0,.90);
+  background-color: rgba(0,0,0,.9);
 }

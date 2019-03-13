@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Table, Icon, Header, Dropdown } from 'semantic-ui-react';
+import { Table, Header, Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css';
 
-class AddedExams extends Component {
+class MandatoryExams extends Component {
 
     constructor(props) {
         super(props);
@@ -14,36 +14,29 @@ class AddedExams extends Component {
     }
 
     handleNoteChange = (index, event, { value }) => {
-        this.props.store.leistungen.hinzugefuegt[index].note = value
+        this.props.store.leistungen.mandatoryExams[index].note = value
         this.props.store.notify()
     };
 
-    removeAdded = (index) => {
-        this.props.store.leistungen.hinzugefuegt.splice(index, 1)
-        this.props.store.notify()
-    }
-
     render() {
-        if (this.props.store.leistungen.hinzugefuegt.length > 0) {
+        if (this.props.store.leistungen.mandatoryExams.length > 0) {
             return (
-                <React.Fragment>
-                    <Header as='h4'>Geplante Leistungen</Header>
-                    <Table className='notentabelle unstackable' celled style={{marginBottom: '30px'}}>
+                <div>
+                    <Header as='h4' title='Aus Grundstudium und Wahlpflicht'>Übrige Pflichtmodule</Header>
+                    <Table className='notentabelle unstackable' celled>
                         <Table.Header>
                             <Table.Row>
-                            <Table.HeaderCell>Modul</Table.HeaderCell>
-                            <Table.HeaderCell>ECTS</Table.HeaderCell>
-                            <Table.HeaderCell>Note</Table.HeaderCell>
-                        </Table.Row>
+                                <Table.HeaderCell>Modul</Table.HeaderCell>
+                                <Table.HeaderCell>ECTS</Table.HeaderCell>
+                                <Table.HeaderCell>Note</Table.HeaderCell>
+                            </Table.Row>
                         </Table.Header>
+
                         <Table.Body>
-                            {this.props.store.leistungen.hinzugefuegt.map((leistung, index) => {
+                            {this.props.store.leistungen.mandatoryExams.map((leistung, index) => {
                                 return (
                                     <Table.Row key={index}>
                                         <Table.Cell>
-                                            <Icon name='remove'
-                                                  title='Entfernen'
-                                                  onClick={this.removeAdded.bind(this, index)} />
                                             {leistung.name}
                                         </Table.Cell>
                                         <Table.Cell>{leistung.ects}</Table.Cell>
@@ -58,7 +51,7 @@ class AddedExams extends Component {
                             })}
                         </Table.Body>
                     </Table>
-                </React.Fragment>
+                </div>
             )
         } else {
             return null
@@ -66,4 +59,4 @@ class AddedExams extends Component {
     }
 }
 
-export default AddedExams;
+export default MandatoryExams;
