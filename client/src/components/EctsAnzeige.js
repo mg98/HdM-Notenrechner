@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import {Popup, Card, Responsive} from 'semantic-ui-react';
+import { Card, Responsive } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 
 class EctsAnzeige extends Component {

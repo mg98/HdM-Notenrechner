@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
-import {Popup, Card, Responsive} from 'semantic-ui-react';
+import { Popup, Card, Responsive } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
-import EctsAnzeige from "../App";
-import {Grid} from "semantic-ui-react/dist/commonjs/collections/Grid";
 
 class Notenschnitt extends Component {
 

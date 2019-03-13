@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Responsive, Segment, Container, Grid, Table, Label, Input, Header, Dropdown} from 'semantic-ui-react';
+import {Responsive, Container, Grid, Table, Header, Dropdown} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import Notenschnitt from './components/Notenschnitt'
 import AddFutureExams from './components/AddFutureExams'
@@ -58,7 +58,7 @@ class App extends Component {
                                                         <Dropdown fluid search selection placeholder='Note'
                                                               options={this.props.notenOptions}
                                                               onChange={this.handleNoteChange.bind(this, index)}
-                                                              value={leistung.note || '-'} />
+                                                              value={leistung.note} />
                                                     }
                                                 </Table.Cell>
                                             </Table.Row>
