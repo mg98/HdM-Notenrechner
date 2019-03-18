@@ -194,3 +194,14 @@
 .modals.ui.dimmer {
   background-color: rgba(0,0,0,.9);
 }
+
+.toggleExamTable {
+  float: right;
+  cursor: pointer;
+}
+
+.hiddenTable {
+  display: inline-block;
+  height: 0;
+  visibility: hidden;
+}

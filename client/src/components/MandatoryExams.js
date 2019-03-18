@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Table, Header, Dropdown } from 'semantic-ui-react';
+import { Icon, Table, Header, Dropdown } from 'semantic-ui-react';
+import * as Constants from '../constants'
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css';
 
 class MandatoryExams extends Component {
+
+    state = {
+        visible: true
+    }
 
     constructor(props) {
         super(props);
@@ -18,12 +23,24 @@ class MandatoryExams extends Component {
         this.props.store.notify()
     };
 
+    toggle = () => {
+        this.setState({
+            visible: !this.state.visible
+        })
+    }
+
     render() {
         if (this.props.store.leistungen.mandatoryExams.length > 0) {
             return (
                 <div>
-                    <Header as='h4' title='Aus Grundstudium und Wahlpflicht'>Übrige Pflichtmodule</Header>
-                    <Table className='notentabelle unstackable' celled>
+                    <Header as='h4' title='Aus Grundstudium und Wahlpflicht' className='left floated'>
+                        Übrige Pflichtmodule
+                    </Header>
+                    <Icon name={this.state.visible ? 'angle down' : 'angle up'}
+                          className='toggleExamTable' onClick={this.toggle} />
+
+                    <Table className={'notentabelle unstackable' +
+                        (this.state.visible ? '' : ' hiddenTable')} celled>
                         <Table.Header>
                             <Table.Row>
                                 <Table.HeaderCell>Modul</Table.HeaderCell>
@@ -41,10 +58,12 @@ class MandatoryExams extends Component {
                                         </Table.Cell>
                                         <Table.Cell>{leistung.ects}</Table.Cell>
                                         <Table.Cell>
+                                            {!Constants.examsWithoutGrade.includes(leistung.name) &&
                                             <Dropdown fluid search selection placeholder='Note'
-                                                      options={this.props.notenOptions}
-                                                      value={leistung.note}
-                                                      onChange={this.handleNoteChange.bind(this, index)} />
+                                                      options={Constants.notenOptions}
+                                                      onChange={this.handleNoteChange.bind(this, index)}
+                                                      value={leistung.note} />
+                                            }
                                         </Table.Cell>
                                     </Table.Row>
                                 )

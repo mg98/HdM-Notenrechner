@@ -8,11 +8,7 @@ import LoginForm from './components/LoginLayout';
 import EctsAnzeige from "./components/EctsAnzeige";
 import AddedExams from "./components/AddedExams";
 import MandatoryExams from "./components/MandatoryExams";
-
-const examsWithoutGrade = [
-    'Praktisches Studiensemester',
-    'Anleitung zum wiss. Arb.'
-]
+import * as Constants from './constants'
 
 class App extends Component {
 
@@ -35,8 +31,8 @@ class App extends Component {
                 <Container>
                     <Grid>
                         <Grid.Column mobile={16} tablet={10} computer={10}>
-                            <AddedExams notenOptions={this.props.notenOptions} store={this.props.store} />
-                            <MandatoryExams notenOptions={this.props.notenOptions} store={this.props.store} />
+                            <AddedExams store={this.props.store} />
+                            <MandatoryExams store={this.props.store} />
                             <Header as='h4'>Angemeldete aber noch nicht bewertete Leistungen</Header>
                             <Table className='notentabelle unstackable' celled>
                                 <Table.Header>
@@ -54,9 +50,9 @@ class App extends Component {
                                                 <Table.Cell>{leistung.name}</Table.Cell>
                                                 <Table.Cell>{leistung.ects}</Table.Cell>
                                                 <Table.Cell>
-                                                    {!examsWithoutGrade.includes(leistung.name) &&
+                                                    {!Constants.examsWithoutGrade.includes(leistung.name) &&
                                                         <Dropdown fluid search selection placeholder='Note'
-                                                              options={this.props.notenOptions}
+                                                              options={Constants.notenOptions}
                                                               onChange={this.handleNoteChange.bind(this, index)}
                                                               value={leistung.note} />
                                                     }

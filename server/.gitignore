@@ -5,3 +5,4 @@ node_modules
 storage/hdm-module.json
 .DS_Store
 server.log
+.env

@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
 import { Table, Icon, Header, Dropdown } from 'semantic-ui-react';
+import * as Constants from '../constants'
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css';
 
 class AddedExams extends Component {
+
+    state = {
+        visible: true
+    }
 
     constructor(props) {
         super(props);
 
         props.store.subscribe(store => {
             this.setState({ store: store });
+        })
+    }
+
+    toggle = () => {
+        this.setState({
+            visible: !this.state.visible
         })
     }
 
@@ -27,8 +38,12 @@ class AddedExams extends Component {
         if (this.props.store.leistungen.hinzugefuegt.length > 0) {
             return (
                 <React.Fragment>
-                    <Header as='h4'>Geplante Leistungen</Header>
-                    <Table className='notentabelle unstackable' celled style={{marginBottom: '30px'}}>
+                    <Header as='h4' className='left floated'>Geplante Leistungen</Header>
+                    <Icon name={this.state.visible ? 'angle down' : 'angle up'}
+                          className='toggleExamTable' onClick={this.toggle} />
+
+                    <Table className={'notentabelle unstackable' +
+                        (this.state.visible ? '' : ' hiddenTable')} celled style={{marginBottom: '30px'}}>
                         <Table.Header>
                             <Table.Row>
                             <Table.HeaderCell>Modul</Table.HeaderCell>
@@ -49,7 +64,7 @@ class AddedExams extends Component {
                                         <Table.Cell>{leistung.ects}</Table.Cell>
                                         <Table.Cell>
                                             <Dropdown fluid search selection placeholder='Note'
-                                                      options={this.props.notenOptions}
+                                                      options={Constants.notenOptions}
                                                       value={leistung.note}
                                                       onChange={this.handleNoteChange.bind(this, index)} />
                                         </Table.Cell>
