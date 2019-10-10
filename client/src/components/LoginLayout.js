@@ -176,7 +176,6 @@ class LoginForm extends Component {
 
                             <List.Item as='a' href={impressumUrl}>Impressum</List.Item>
                         </List>
-                        <p style={{ marginTop: '20px', color: 'gray' }}>Made by Ibana Heering</p>
                     </Grid.Column>
                 </Grid>
             </div>

@@ -205,3 +205,8 @@
   height: 0;
   visibility: hidden;
 }
+
+.modal .description a {
+  color: white;
+  text-decoration: underline;
+}
