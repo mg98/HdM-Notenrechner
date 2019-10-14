@@ -40,10 +40,16 @@ class EctsAnzeige extends Component {
             geplanteEcts += leistungen.hinzugefuegt[i].ects;
         }
 
+        let pflichtEcts = 0
+        for (const i in leistungen.mandatoryExams) {
+            pflichtEcts += leistungen.mandatoryExams[i].ects;
+        }
+
         this.setState({
-            ects: ects,
-            angemeldeteEcts: angemeldeteEcts,
-            geplanteEcts: geplanteEcts
+            ects,
+            angemeldeteEcts,
+            geplanteEcts,
+            pflichtEcts
         });
     }
 
@@ -59,7 +65,7 @@ class EctsAnzeige extends Component {
                             <p>Bei Bestehen aller angemeldeten Leistungen:</p>
                             <p className='text-bold'>{this.state.ects + this.state.angemeldeteEcts} / {7*30} ECTS</p>
                             <p>Mit geplanten Leistungen:</p>
-                            <p className='text-bold'>{this.state.ects + this.state.angemeldeteEcts + this.state.geplanteEcts} / {7*30} ECTS</p>
+                            <p className='text-bold'>{this.state.ects + this.state.angemeldeteEcts + this.state.geplanteEcts + this.state.pflichtEcts} / {7*30} ECTS</p>
                         </Card.Content>
                     </Card>
                 </Responsive>
